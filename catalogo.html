@@ -15,21 +15,15 @@
 </head>
 <body data-page="catalog">
   <div class="visual-admin" id="visual-admin" hidden><div><span class="admin-live-dot"></span><strong id="visual-admin-title">Modo edición</strong><small id="visual-admin-user"></small></div><nav><a href="admin/index.php?section=products">Productos</a><a href="index.html?edit=media">Fotos y videos</a><a href="admin/index.php?section=categories">Categorías</a><a href="admin/logout.php">Salir</a></nav></div>
-  <div class="site-loader" id="site-loader" aria-label="Presentación de Ferretería El Volcán">
-    <video id="loader-video" autoplay muted playsinline webkit-playsinline preload="auto"><source src="ferreteriaelvolcan/ferreteria-volcan-intro-web.mp4" type="video/mp4"></video>
-    <div class="loader-shade"></div>
-    <div class="loader-brand"><img src="ferreteriaelvolcan/logotipo-ferreteria-volcan.png" alt="Ferretería El Volcán" width="112" height="112"><p>Del paisaje al proyecto</p><div class="loader-progress" aria-hidden="true"><span></span></div></div>
-    <button class="loader-skip" id="loader-skip" type="button">Omitir introducción →</button>
-  </div>
   <a class="skip-link" href="#catalogo">Ir al catálogo</a>
   <div class="topbar">Cotiza rápido · Confirmación directa por WhatsApp</div>
   <header class="site-header" id="inicio">
-    <a class="brand" href="#inicio" aria-label="Ferretería El Volcán, inicio">
+    <a class="brand" href="index.html" aria-label="Ferretería El Volcán, inicio">
       <img src="ferreteriaelvolcan/logotipo-ferreteria-volcan.png" alt="" width="64" height="64">
       <span>Ferretería<br><strong>El Volcán</strong></span>
     </a>
     <nav aria-label="Navegación principal">
-      <a class="catalog-nav active" href="catalogo.html"><span aria-hidden="true">▦</span> Catálogo completo</a><a class="offers-nav" href="ofertas.html"><span aria-hidden="true">◆</span> Ofertas</a><a href="index.html#proyectos">Proyectos</a><a href="index.html#como-comprar">Cómo cotizar</a>
+      <a href="index.html">Inicio</a><a class="catalog-nav active" href="catalogo.html"><span aria-hidden="true">▦</span> Catálogo completo</a><a class="offers-nav" href="ofertas.html"><span aria-hidden="true">◆</span> Ofertas</a><a href="index.html#proyectos">Proyectos</a><a href="index.html#como-comprar">Cómo cotizar</a>
     </nav>
     <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <button class="cart-button" type="button" data-open-cart aria-label="Abrir mi pedido">
@@ -39,9 +33,15 @@
 
   <main class="catalog-page-main">
     <section class="catalog-page-intro">
+      <div class="catalog-background-carousel" aria-hidden="true">
+        <span class="active" style="background-image:url('ferreteriaelvolcan/fondo-catalogo.webp')"></span>
+        <span style="background-image:url('ferreteriaelvolcan/fondo-catalogo2.webp')"></span>
+        <span style="background-image:url('ferreteriaelvolcan/fondo-catalogo3.webp')"></span>
+      </div>
       <p class="eyebrow dark">Ferretería El Volcán</p>
       <h1>Catálogo<br><em>completo.</em></h1>
       <p>Encuentra los materiales y productos que necesitas para tu próximo proyecto. Filtra por categoría, arma tu pedido y solicita una cotización por WhatsApp.</p>
+      <div class="catalog-carousel-dots" role="group" aria-label="Fondos del catálogo"><button class="active" type="button" data-catalog-slide="0" aria-label="Ver fondo 1" aria-pressed="true"></button><button type="button" data-catalog-slide="1" aria-label="Ver fondo 2" aria-pressed="false"></button><button type="button" data-catalog-slide="2" aria-label="Ver fondo 3" aria-pressed="false"></button></div>
     </section>
     <section class="catalog-section" id="catalogo">
       <div class="section-heading">

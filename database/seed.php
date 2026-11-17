@@ -40,9 +40,16 @@ try {
     $galleryInsert = db()->prepare('INSERT INTO gallery_media(title,description,media_type,path,sort_order,active) VALUES(?,?,?,?,?,1)');
     $galleryInsert->execute(['Un pequeño gran proyecto','Video principal de Ferretería El Volcán','video','ferreteriaelvolcan/ferreteria-volcan-un-pequeno-gran-proyecto.mp4',10]);
     $galleryInsert->execute(['Proyecto terraza','Proyecto realizado con materiales de ferretería','video','ferreteriaelvolcan/proyecto-terraza.mp4',20]);
-    $galleryInsert->execute(['Tableros OSB','Materiales para proyectos de construcción','image','ferreteriaelvolcan/osb.jpg',30]);
+    foreach ([
+        ['Materiales para construcción','Construcción','ferreteriaelvolcan/cemento.jpg',100],
+        ['Grifería para tu proyecto','Gasfitería','ferreteriaelvolcan/llaves-griferia.jpg',110],
+        ['Tableros para construir','Maderas','ferreteriaelvolcan/osb.jpg',120],
+        ['Iluminación eficiente','Electricidad','ferreteriaelvolcan/luces.jpg',130],
+        ['Soluciones en PVC','Gasfitería','ferreteriaelvolcan/tubos-pvc.jpg',140],
+        ['Renueva tus espacios','Hogar','ferreteriaelvolcan/llaves-griferia-3.jpg',150],
+    ] as $offer) $galleryInsert->execute([$offer[0],$offer[1],'image',$offer[2],$offer[3]]);
     db()->commit();
-    echo "Carga inicial completada: 4 categorías, 10 productos y 3 medios.\n";
+    echo "Carga inicial completada: 4 categorías, 10 productos y medios para web y ofertas.\n";
 } catch (Throwable $e) {
     db()->rollBack();
     throw $e;
