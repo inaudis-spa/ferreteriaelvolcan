@@ -9,9 +9,10 @@ try {
     $key = (string)($_POST['slot_key'] ?? '');
     $stmt = db()->prepare('SELECT * FROM site_media_slots WHERE slot_key=?'); $stmt->execute([$key]); $slot=$stmt->fetch();
     if (!$slot) throw new RuntimeException('Sección visual no encontrada.');
+    if (empty($_FILES['media']) || !is_array($_FILES['media'])) throw new RuntimeException('Selecciona una fotografía o video.');
+    $previousPath = (string)$slot['path'];
     $uploaded = upload_file($_FILES['media'], $slot['media_type']);
     db()->prepare('UPDATE site_media_slots SET path=? WHERE id=?')->execute([$uploaded['path'],$slot['id']]);
-    $old = realpath(PROJECT_ROOT.'/'.$slot['path']); $root=realpath(UPLOAD_ROOT);
-    if($old&&$root&&str_starts_with($old,$root.DIRECTORY_SEPARATOR)&&is_file($old)) unlink($old);
-    echo json_encode(['ok'=>true,'path'=>$uploaded['path'],'slot'=>$key], JSON_UNESCAPED_SLASHES);
+    // Se conserva el archivo anterior como respaldo para permitir una restauración manual.
+    echo json_encode(['ok'=>true,'path'=>$uploaded['path'],'previous_path'=>$previousPath,'slot'=>$key], JSON_UNESCAPED_SLASHES);
 } catch(Throwable $e) { http_response_code(422);echo json_encode(['ok'=>false,'error'=>$e->getMessage()],JSON_UNESCAPED_UNICODE); }
