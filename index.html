@@ -29,7 +29,7 @@
       <span>Ferretería<br><strong>El Volcán</strong></span>
     </a>
     <nav aria-label="Navegación principal">
-      <a class="catalog-nav" href="#catalogo"><span aria-hidden="true">▦</span> Catálogo completo</a><a class="offers-nav" href="ofertas.html"><span aria-hidden="true">◆</span> Ofertas</a><a href="#proyectos">Proyectos</a><a href="#como-comprar">Cómo cotizar</a>
+      <a class="catalog-nav" href="catalogo.html"><span aria-hidden="true">▦</span> Catálogo completo</a><a class="offers-nav" href="ofertas.html"><span aria-hidden="true">◆</span> Ofertas</a><a href="#proyectos">Proyectos</a><a href="#como-comprar">Cómo cotizar</a>
     </nav>
     <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <button class="cart-button" type="button" data-open-cart aria-label="Abrir mi pedido">
@@ -46,7 +46,7 @@
       <div class="hero-content">
         <p class="eyebrow">Ferretería El Volcán</p>
         <h1 id="hero-title">Un pequeño<br><em>gran proyecto.</em></h1>
-        <div class="hero-actions"><a class="button primary" href="#catalogo">Explorar productos <span>↘</span></a><a class="button ghost" href="https://wa.me/56986771343" target="_blank" rel="noopener">Hablar con nosotros</a></div>
+        <div class="hero-actions"><a class="button primary" href="catalogo.html">Explorar productos <span>↘</span></a><a class="button ghost" href="https://wa.me/56986771343" target="_blank" rel="noopener">Hablar con nosotros</a></div>
       </div>
       <div class="hero-note"><strong>01</strong><span>Catálogo<br>por categorías</span><strong>02</strong><span>Pedido fácil<br>por WhatsApp</span></div>
     </section>
@@ -60,8 +60,8 @@
 
     <section class="catalog-section" id="catalogo">
       <div class="section-heading">
-        <div><p class="eyebrow dark">Catálogo completo</p><h2>Todo para hacer<br>realidad tu proyecto</h2></div>
-        <p>Agrega productos y cantidades. Te confirmaremos disponibilidad, precio y condiciones al recibir tu solicitud.</p>
+        <div><p class="eyebrow dark">Selección de la ferretería</p><h2>Productos<br>destacados</h2></div>
+        <p>Una selección de productos que puedes destacar desde el mantenedor. Explora el catálogo completo para encontrar más alternativas.</p>
       </div>
       <div class="catalog-tools">
         <label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">Buscar productos</span><input id="search" type="search" placeholder="Buscar producto o categoría…"></label>
@@ -69,7 +69,7 @@
           <button class="active" data-filter="Todos">Todos</button><button data-filter="Construcción">Construcción</button><button data-filter="Gasfitería">Gasfitería</button><button data-filter="Electricidad">Electricidad</button><button data-filter="Maderas">Maderas</button>
         </div>
       </div>
-      <div class="catalog-banner"><div><span>▦</span><strong>Todos nuestros productos</strong></div><p>Explora, compara y agrega todo lo que necesitas a una sola cotización.</p></div>
+      <div class="catalog-banner"><div><span>★</span><strong>Selección destacada</strong></div><p>Estos productos se eligen y administran desde el mantenedor de productos.</p><a class="text-button" href="catalogo.html">Ver catálogo completo →</a></div>
       <p id="result-count" class="result-count" aria-live="polite"></p>
       <div class="product-grid" id="product-grid"></div>
       <div class="empty-state" id="empty-state" hidden><span>⌕</span><h3>No encontramos coincidencias</h3><p>Prueba otro término o revisa todas las categorías.</p><button class="text-button" id="clear-search">Ver todos los productos</button></div>
@@ -86,7 +86,7 @@
     </section>
   </main>
 
-  <footer><div class="footer-brand"><img src="ferreteriaelvolcan/logotipo-ferreteria-volcan.png" alt="Ferretería El Volcán" width="92" height="92"><p>Materiales para construir<br>lo que imaginas.</p></div><div><h3>Explora</h3><a href="#catalogo">Productos</a><a href="ofertas.html">Ofertas</a><a href="#proyectos">Proyectos</a><a href="#como-comprar">Cómo cotizar</a></div><div><h3>Contacto</h3><a href="tel:+56986771343">+56 9 8677 1343</a><a href="https://wa.me/56986771343" target="_blank" rel="noopener">WhatsApp</a></div><p class="legal">© <span id="year"></span> Ferretería El Volcán</p></footer>
+  <footer><div class="footer-brand"><img src="ferreteriaelvolcan/logotipo-ferreteria-volcan.png" alt="Ferretería El Volcán" width="92" height="92"><p>Materiales para construir<br>lo que imaginas.</p></div><div><h3>Explora</h3><a href="catalogo.html">Catálogo completo</a><a href="ofertas.html">Ofertas</a><a href="#proyectos">Proyectos</a><a href="#como-comprar">Cómo cotizar</a></div><div><h3>Contacto</h3><a href="tel:+56986771343">+56 9 8677 1343</a><a href="https://wa.me/56986771343" target="_blank" rel="noopener">WhatsApp</a></div><p class="legal">© <span id="year"></span> Ferretería El Volcán</p></footer>
 
   <div class="drawer-backdrop" data-close-cart></div>
   <aside class="cart-drawer" aria-labelledby="cart-title" aria-hidden="true">
@@ -123,7 +123,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <div class="visual-editor" id="visual-editor" aria-hidden="true"><button class="editor-backdrop" data-close-editor aria-label="Cerrar editor"></button><form id="visual-editor-form" class="editor-panel"><header><div><p class="eyebrow dark">Edición directa</p><h2>Editar producto</h2></div><button type="button" class="icon-button" data-close-editor aria-label="Cerrar">×</button></header><input type="hidden" name="csrf"><input type="hidden" name="id"><label>Nombre<input name="name" required></label><label>Categoría<select name="category_id"></select></label><label class="editor-wide">Descripción breve<input name="short_description" maxlength="350"></label><label class="editor-wide">Descripción<textarea name="description" rows="5"></textarea></label><label>Precio<input name="price" type="number" min="0" step="1"></label><label>Stock<input name="stock" type="number" min="0"></label><label class="editor-check"><input name="active" type="checkbox"> Producto publicado</label><div class="editor-actions editor-wide"><a id="editor-images-link" href="admin/index.php?section=products">Gestionar fotografías</a><button class="button detail-add" type="submit">Guardar cambios</button></div></form></div>
   <div class="visual-editor" id="media-editor" aria-hidden="true"><button class="editor-backdrop" data-close-media-editor aria-label="Cerrar editor"></button><form id="media-editor-form" class="editor-panel media-editor-panel"><header><div><p class="eyebrow dark">Edición en la web</p><h2>Cambiar medio</h2></div><button type="button" class="icon-button" data-close-media-editor aria-label="Cerrar">×</button></header><input type="hidden" name="csrf"><input type="hidden" name="slot_key"><div class="editor-wide media-current"><span>Sección</span><strong id="media-editor-label"></strong><video id="media-editor-video" muted playsinline controls hidden></video><img id="media-editor-image" alt="Vista previa actual" hidden></div><label class="editor-wide">Seleccionar desde este dispositivo<input name="media" id="media-editor-file" type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/webm" required></label><div class="editor-wide media-new-preview-wrap"><span>Vista previa del nuevo archivo</span><img id="media-new-image-preview" alt="Vista previa del nuevo archivo" hidden><video id="media-new-video-preview" controls muted playsinline hidden></video></div><section class="editor-wide media-image-controls" id="media-image-controls" hidden><h3>Encuadre de la fotografía</h3><label>Posición horizontal <input type="range" name="focal_x" id="media-focal-x" min="0" max="100" value="50"></label><label>Posición vertical <input type="range" name="focal_y" id="media-focal-y" min="0" max="100" value="50"></label><p>Desliza para ajustar qué parte de la fotografía queda centrada en la portada.</p></section><section class="editor-wide media-history" id="media-history" hidden><h3>Versiones anteriores</h3><select id="media-history-select"><option value="">Selecciona una versión para restaurar</option></select><button type="button" class="button dark" id="media-restore-button">Restaurar versión seleccionada</button></section><p class="editor-wide media-help" id="media-editor-help">Las fotografías se optimizan automáticamente. Los videos deben estar en MP4 o WebM y se adaptan al espacio de visualización.</p><div class="editor-wide media-upload-progress" id="media-editor-progress" hidden><span>Subiendo archivo…</span><div><i id="media-editor-progress-bar"></i></div></div><div class="editor-actions editor-wide"><button class="button detail-add" type="submit">Guardar y publicar</button></div></form></div>
-  <a class="floating-catalog" href="#catalogo"><span aria-hidden="true">▦</span><b>Ver catálogo</b></a>
+  <a class="floating-catalog" href="catalogo.html"><span aria-hidden="true">▦</span><b>Ver catálogo</b></a>
   <script src="app.js" defer></script>
 </body>
 </html>
