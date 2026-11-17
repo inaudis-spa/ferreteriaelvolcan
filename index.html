@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0825a7">
+  <meta name="description" content="Catálogo de Ferretería El Volcán. Arma tu pedido y solicita una cotización directamente por WhatsApp.">
+  <title>Ferretería El Volcán | Materiales para tu próximo proyecto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="video.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HardwareStore","name":"Ferretería El Volcán","telephone":"+56986771343"}</script>
+</head>
+<body>
+  <div class="visual-admin" id="visual-admin" hidden><div><span class="admin-live-dot"></span><strong id="visual-admin-title">Modo edición</strong><small id="visual-admin-user"></small></div><nav><a href="admin/index.php?section=products">Productos</a><a href="index.html?edit=media">Fotos y videos</a><a href="admin/index.php?section=categories">Categorías</a><a href="admin/logout.php">Salir</a></nav></div>
+  <div class="site-loader" id="site-loader" aria-label="Presentación de Ferretería El Volcán">
+    <video id="loader-video" autoplay muted playsinline webkit-playsinline preload="auto"><source src="ferreteriaelvolcan/ferreteria-volcan-intro-web.mp4" type="video/mp4"></video>
+    <div class="loader-shade"></div>
+    <div class="loader-brand"><img src="ferreteriaelvolcan/logotipo-ferreteria-volcan.png" alt="Ferretería El Volcán" width="112" height="112"><p>Del paisaje al proyecto</p><div class="loader-progress" aria-hidden="true"><span></span></div></div>
+    <button class="loader-skip" id="loader-skip" type="button">Omitir introducción →</button>
+  </div>
+  <a class="skip-link" href="#catalogo">Ir al catálogo</a>
+  <div class="topbar">Cotiza rápido · Confirmación directa por WhatsApp</div>
+  <header class="site-header" id="inicio">
+    <a class="brand" href="#inicio" aria-label="Ferretería El Volcán, inicio">
+      <img src="ferreteriaelvolcan/logotipo-ferreteria-volcan.png" alt="" width="64" height="64">
+      <span>Ferretería<br><strong>El Volcán</strong></span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a class="catalog-nav" href="#catalogo"><span aria-hidden="true">▦</span> Catálogo completo</a><a class="offers-nav" href="ofertas.html"><span aria-hidden="true">◆</span> Ofertas</a><a href="#proyectos">Proyectos</a><a href="#como-comprar">Cómo cotizar</a>
+    </nav>
+    <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <button class="cart-button" type="button" data-open-cart aria-label="Abrir mi pedido">
+      <span class="cart-icon" aria-hidden="true">🛒</span> Mi pedido <b data-cart-count>0</b>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <video id="hero-video" autoplay muted loop playsinline poster="ferreteriaelvolcan/osb.jpg" aria-hidden="true">
+        <source src="ferreteriaelvolcan/ferreteria-volcan-un-pequeno-gran-proyecto.mp4" type="video/mp4">
+      </video>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Ferretería El Volcán</p>
+        <h1 id="hero-title">Un pequeño<br><em>gran proyecto.</em></h1>
+        <div class="hero-actions"><a class="button primary" href="#catalogo">Explorar productos <span>↘</span></a><a class="button ghost" href="https://wa.me/56986771343" target="_blank" rel="noopener">Hablar con nosotros</a></div>
+      </div>
+      <div class="hero-note"><strong>01</strong><span>Catálogo<br>por categorías</span><strong>02</strong><span>Pedido fácil<br>por WhatsApp</span></div>
+    </section>
+
+    <section class="category-strip" aria-label="Categorías destacadas">
+      <button data-category="Construcción"><span>▧</span> Construcción</button>
+      <button data-category="Gasfitería"><span>◉</span> Gasfitería</button>
+      <button data-category="Electricidad"><span>ϟ</span> Electricidad</button>
+      <button data-category="Maderas"><span>▤</span> Maderas</button>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+      <div class="section-heading">
+        <div><p class="eyebrow dark">Catálogo completo</p><h2>Todo para hacer<br>realidad tu proyecto</h2></div>
+        <p>Agrega productos y cantidades. Te confirmaremos disponibilidad, precio y condiciones al recibir tu solicitud.</p>
+      </div>
+      <div class="catalog-tools">
+        <label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">Buscar productos</span><input id="search" type="search" placeholder="Buscar producto o categoría…"></label>
+        <div class="filters" role="group" aria-label="Filtrar por categoría">
+          <button class="active" data-filter="Todos">Todos</button><button data-filter="Construcción">Construcción</button><button data-filter="Gasfitería">Gasfitería</button><button data-filter="Electricidad">Electricidad</button><button data-filter="Maderas">Maderas</button>
+        </div>
+      </div>
+      <div class="catalog-banner"><div><span>▦</span><strong>Todos nuestros productos</strong></div><p>Explora, compara y agrega todo lo que necesitas a una sola cotización.</p></div>
+      <p id="result-count" class="result-count" aria-live="polite"></p>
+      <div class="product-grid" id="product-grid"></div>
+      <div class="empty-state" id="empty-state" hidden><span>⌕</span><h3>No encontramos coincidencias</h3><p>Prueba otro término o revisa todas las categorías.</p><button class="text-button" id="clear-search">Ver todos los productos</button></div>
+    </section>
+
+    <section class="project-story" id="proyectos">
+      <div class="project-copy"><div><p class="eyebrow">Proyecto real · De la idea a la obra</p><h2>Una terraza comienza con el material correcto.</h2></div><p>No siempre necesitas saber el nombre exacto de cada pieza. Cuéntanos qué estás construyendo y te ayudamos a reunir lo necesario.</p><a class="arrow-link" href="https://wa.me/56986771343?text=Hola%20Ferreter%C3%ADa%20El%20Volc%C3%A1n%2C%20necesito%20orientaci%C3%B3n%20para%20un%20proyecto." target="_blank" rel="noopener">Conversemos sobre tu proyecto <span>→</span></a></div>
+      <div class="project-media"><video id="terrace-video" autoplay muted loop preload="metadata" playsinline poster="ferreteriaelvolcan/osb.jpg" aria-label="Proyecto de construcción de terraza"><source src="ferreteriaelvolcan/proyecto-terraza.mp4" type="video/mp4"></video><button class="video-toggle" id="terrace-toggle" type="button" aria-label="Pausar video"><span aria-hidden="true">Ⅱ</span> Pausar</button></div>
+    </section>
+
+    <section class="steps" id="como-comprar">
+      <div><p class="eyebrow">Cotizar es simple</p><h2>Tres pasos.<br>Cero complicaciones.</h2></div>
+      <ol><li><b>01</b><span><strong>Explora</strong>Busca por categoría o producto.</span></li><li><b>02</b><span><strong>Arma tu pedido</strong>Agrega productos y ajusta cantidades.</span></li><li><b>03</b><span><strong>Confirma</strong>Envía la solicitud y coordinamos contigo.</span></li></ol>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand"><img src="ferreteriaelvolcan/logotipo-ferreteria-volcan.png" alt="Ferretería El Volcán" width="92" height="92"><p>Materiales para construir<br>lo que imaginas.</p></div><div><h3>Explora</h3><a href="#catalogo">Productos</a><a href="ofertas.html">Ofertas</a><a href="#proyectos">Proyectos</a><a href="#como-comprar">Cómo cotizar</a></div><div><h3>Contacto</h3><a href="tel:+56986771343">+56 9 8677 1343</a><a href="https://wa.me/56986771343" target="_blank" rel="noopener">WhatsApp</a></div><p class="legal">© <span id="year"></span> Ferretería El Volcán</p></footer>
+
+  <div class="drawer-backdrop" data-close-cart></div>
+  <aside class="cart-drawer" aria-labelledby="cart-title" aria-hidden="true">
+    <header><div><p class="eyebrow dark">Cotización</p><h2 id="cart-title">Mi pedido <span data-cart-count>0</span></h2></div><button class="icon-button" data-close-cart aria-label="Cerrar pedido">×</button></header>
+    <div id="cart-items" class="cart-items"></div>
+    <div id="cart-empty" class="cart-empty"><span>▰</span><h3>Tu pedido está vacío</h3><p>Agrega productos del catálogo para solicitar una cotización.</p><button class="button dark" data-close-cart>Explorar catálogo</button></div>
+    <div class="cart-checkout" id="cart-checkout" hidden>
+      <div class="cart-summary"><span>Total de unidades</span><strong id="cart-units">0</strong></div>
+      <p class="quote-note">Precios y disponibilidad serán confirmados por Ferretería El Volcán.</p>
+      <form id="quote-form"><label>Nombre <input name="name" required autocomplete="name" placeholder="Tu nombre"></label><label>Comuna <input name="commune" required autocomplete="address-level2" placeholder="Tu comuna"></label><label>Comentario <textarea name="note" rows="2" placeholder="Despacho, retiro o detalle del proyecto (opcional)"></textarea></label><button class="button whatsapp" type="submit">Abrir WhatsApp <span>↗</span></button></form>
+      <small>Se abrirá WhatsApp con tu solicitud. Debes confirmar el envío en la aplicación; esto no reserva stock ni confirma la compra.</small>
+      <button class="clear-cart" id="clear-cart" type="button">Vaciar pedido</button>
+    </div>
+  </aside>
+  <div class="product-modal" id="product-modal" aria-hidden="true">
+    <div class="product-modal-backdrop" data-close-product></div>
+    <article class="product-detail" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+      <button class="detail-close" data-close-product aria-label="Cerrar ficha de producto">×</button>
+      <div class="detail-gallery">
+        <div class="detail-main"><img id="detail-image" src="" alt="" width="900" height="900"></div>
+        <div class="detail-thumbs" id="detail-thumbs" aria-label="Galería del producto"></div>
+      </div>
+      <div class="detail-content">
+        <p class="eyebrow dark" id="detail-category"></p>
+        <h2 id="detail-title"></h2>
+        <p class="detail-description" id="detail-description"></p>
+        <dl class="detail-facts"><div><dt>Disponibilidad</dt><dd>A confirmar</dd></div><div><dt>Precio</dt><dd>Cotizar</dd></div><div><dt>Atención</dt><dd>Por WhatsApp</dd></div></dl>
+        <div class="detail-quantity"><span>Cantidad</span><div class="qty large"><button type="button" id="detail-minus" aria-label="Disminuir cantidad">−</button><output id="detail-qty">1</output><button type="button" id="detail-plus" aria-label="Aumentar cantidad">+</button></div></div>
+        <button class="button detail-add" id="detail-add" type="button">Agregar a mi pedido <span>+</span></button>
+        <p class="detail-note">La disponibilidad, presentación y precio final serán confirmados por Ferretería El Volcán.</p>
+      </div>
+    </article>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="visual-editor" id="visual-editor" aria-hidden="true"><button class="editor-backdrop" data-close-editor aria-label="Cerrar editor"></button><form id="visual-editor-form" class="editor-panel"><header><div><p class="eyebrow dark">Edición directa</p><h2>Editar producto</h2></div><button type="button" class="icon-button" data-close-editor aria-label="Cerrar">×</button></header><input type="hidden" name="csrf"><input type="hidden" name="id"><label>Nombre<input name="name" required></label><label>Categoría<select name="category_id"></select></label><label class="editor-wide">Descripción breve<input name="short_description" maxlength="350"></label><label class="editor-wide">Descripción<textarea name="description" rows="5"></textarea></label><label>Precio<input name="price" type="number" min="0" step="1"></label><label>Stock<input name="stock" type="number" min="0"></label><label class="editor-check"><input name="active" type="checkbox"> Producto publicado</label><div class="editor-actions editor-wide"><a id="editor-images-link" href="admin/index.php?section=products">Gestionar fotografías</a><button class="button detail-add" type="submit">Guardar cambios</button></div></form></div>
+  <div class="visual-editor" id="media-editor" aria-hidden="true"><button class="editor-backdrop" data-close-media-editor aria-label="Cerrar editor"></button><form id="media-editor-form" class="editor-panel media-editor-panel"><header><div><p class="eyebrow dark">Edición en la web</p><h2>Cambiar medio</h2></div><button type="button" class="icon-button" data-close-media-editor aria-label="Cerrar">×</button></header><input type="hidden" name="csrf"><input type="hidden" name="slot_key"><div class="editor-wide media-current"><span>Sección</span><strong id="media-editor-label"></strong><video id="media-editor-video" muted playsinline controls hidden></video><img id="media-editor-image" alt="Vista previa actual" hidden></div><label class="editor-wide">Nueva foto o video<input name="media" id="media-editor-file" type="file" required></label><p class="editor-wide media-help" id="media-editor-help">La imagen se optimizará automáticamente para la web. En videos usa MP4 o WebM.</p><div class="editor-actions editor-wide"><button class="button detail-add" type="submit">Subir y reemplazar</button></div></form></div>
+  <a class="floating-catalog" href="#catalogo"><span aria-hidden="true">▦</span><b>Ver catálogo</b></a>
+  <script src="app.js" defer></script>
+</body>
+</html>

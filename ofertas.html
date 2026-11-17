@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0825a7">
+  <meta name="description" content="Selección de ofertas y oportunidades de Ferretería El Volcán. Consulta disponibilidad directamente por WhatsApp.">
+  <title>Ofertas | Ferretería El Volcán</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="video.css">
+  <link rel="stylesheet" href="ofertas.css">
+  <link rel="stylesheet" href="ofertas-buttons.css">
+</head>
+<body class="offers-page">
+  <div class="topbar">Oportunidades seleccionadas · Confirma precio y disponibilidad</div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Ferretería El Volcán, inicio"><img src="ferreteriaelvolcan/logotipo-ferreteria-volcan.png" alt="" width="64" height="64"><span>Ferretería<br><strong>El Volcán</strong></span></a>
+    <nav aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="index.html#catalogo">Catálogo</a><a class="offers-nav active" href="ofertas.html">◆ Ofertas</a><a href="index.html#proyectos">Proyectos</a></nav>
+    <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <a class="cart-button offers-contact" href="https://wa.me/56986771343?text=Hola%20Ferreter%C3%ADa%20El%20Volc%C3%A1n%2C%20quisiera%20consultar%20por%20sus%20ofertas." target="_blank" rel="noopener">Consultar <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="offers-hero">
+      <div><p class="eyebrow">Selección El Volcán</p><h1>Buenas oportunidades.<br><em>Grandes proyectos.</em></h1></div>
+      <p>Revisa nuestra selección fotográfica y consulta las condiciones vigentes directamente con nosotros. Precios y disponibilidad sujetos a confirmación.</p>
+    </section>
+
+    <section class="offers-gallery" aria-labelledby="offers-title">
+      <div class="offers-heading"><p class="eyebrow dark">Galería de oportunidades</p><h2 id="offers-title">Encuentra tu próxima solución</h2><p>Selecciona una fotografía para verla en detalle o consulta por el producto mediante WhatsApp.</p></div>
+      <div class="photo-grid">
+        <article class="offer-photo featured"><button data-photo="cemento.jpg" data-title="Materiales para construcción"><img src="ferreteriaelvolcan/cemento.jpg" alt="Materiales para construcción" width="442" height="590"><span><b>Construcción</b>Ver oportunidad →</span></button></article>
+        <article class="offer-photo"><button data-photo="llaves-griferia.jpg" data-title="Grifería para tu proyecto"><img src="ferreteriaelvolcan/llaves-griferia.jpg" alt="Grifería de cocina" width="443" height="590"><span><b>Gasfitería</b>Ver oportunidad →</span></button></article>
+        <article class="offer-photo wide"><button data-photo="osb.jpg" data-title="Tableros para construir"><img src="ferreteriaelvolcan/osb.jpg" alt="Tableros OSB" width="590" height="443"><span><b>Maderas</b>Ver oportunidad →</span></button></article>
+        <article class="offer-photo"><button data-photo="luces.jpg" data-title="Iluminación eficiente"><img src="ferreteriaelvolcan/luces.jpg" alt="Productos de iluminación" width="442" height="590"><span><b>Electricidad</b>Ver oportunidad →</span></button></article>
+        <article class="offer-photo"><button data-photo="tubos-pvc.jpg" data-title="Soluciones en PVC"><img src="ferreteriaelvolcan/tubos-pvc.jpg" alt="Tuberías de PVC" width="526" height="701"><span><b>Gasfitería</b>Ver oportunidad →</span></button></article>
+        <article class="offer-photo wide"><button data-photo="llaves-griferia-3.jpg" data-title="Renueva tus espacios"><img src="ferreteriaelvolcan/llaves-griferia-3.jpg" alt="Grifería para cocina" width="590" height="590"><span><b>Hogar</b>Ver oportunidad →</span></button></article>
+      </div>
+    </section>
+
+    <section class="offers-cta"><div><p class="eyebrow">¿Encontraste algo?</p><h2>Consulta la oferta vigente.</h2></div><a class="button primary" href="https://wa.me/56986771343?text=Hola%20Ferreter%C3%ADa%20El%20Volc%C3%A1n%2C%20quisiera%20consultar%20por%20una%20oferta." target="_blank" rel="noopener">Consultar por WhatsApp <span>↗</span></a></section>
+  </main>
+
+  <footer><div class="footer-brand"><img src="ferreteriaelvolcan/logotipo-ferreteria-volcan.png" alt="Ferretería El Volcán" width="92" height="92"><p>Materiales para construir<br>lo que imaginas.</p></div><div><h3>Explora</h3><a href="index.html">Inicio</a><a href="index.html#catalogo">Catálogo</a><a href="ofertas.html">Ofertas</a></div><div><h3>Contacto</h3><a href="tel:+56986771343">+56 9 8677 1343</a><a href="https://wa.me/56986771343" target="_blank" rel="noopener">WhatsApp</a></div><p class="legal">© <span id="year"></span> Ferretería El Volcán</p></footer>
+
+  <div class="photo-lightbox" id="photo-lightbox" aria-hidden="true"><button class="lightbox-backdrop" data-close-lightbox aria-label="Cerrar imagen"></button><div class="lightbox-content" role="dialog" aria-modal="true" aria-labelledby="lightbox-title"><button class="lightbox-close" data-close-lightbox aria-label="Cerrar">×</button><img id="lightbox-image" src="" alt=""><div><h2 id="lightbox-title"></h2><a id="lightbox-whatsapp" href="#" target="_blank" rel="noopener">Consultar disponibilidad por WhatsApp →</a></div></div></div>
+  <script src="ofertas.js" defer></script>
+</body>
+</html>
