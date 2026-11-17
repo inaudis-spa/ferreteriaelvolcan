@@ -1,5 +1,5 @@
 const lightbox=document.querySelector('#photo-lightbox');
-fetch('api/site-media.php',{cache:'no-store'}).then(response=>response.json()).then(data=>{const cover=data.slots?.find(slot=>slot.slot_key==='offers_cover');if(cover?.path)document.querySelector('.offers-hero').style.backgroundImage=`linear-gradient(90deg,rgba(5,9,22,.94),rgba(5,9,22,.35)),url("${cover.path}")`}).catch(()=>{});
+let offersCover=null;const offersHero=document.querySelector('.offers-hero');const setOffersCover=slot=>{if(!slot||!offersHero)return;offersCover=slot;offersHero.style.backgroundImage=`linear-gradient(90deg,rgba(5,9,22,.94),rgba(5,9,22,.35)),url("${slot.path}")`;offersHero.style.backgroundPosition=`${slot.focal_x??50}% ${slot.focal_y??50}%`;};fetch('api/site-media.php',{cache:'no-store'}).then(response=>response.json()).then(data=>{const cover=data.slots?.find(slot=>slot.slot_key==='offers_cover');if(cover)setOffersCover(cover)}).catch(()=>{});
 const menuToggle=document.querySelector('.mobile-menu-toggle');if(menuToggle){menuToggle.addEventListener('click',()=>{const header=document.querySelector('.site-header'),open=header.classList.toggle('menu-open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'×':'☰'})}
 const closeLightbox=()=>{lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true')};
 document.querySelectorAll('.offer-photo [data-photo]').forEach(button=>{const title=button.dataset.title;const link=document.createElement('a');link.className='offer-whatsapp';link.href=`https://wa.me/56986771343?text=${encodeURIComponent(`Hola Ferretería El Volcán, quisiera solicitar información, precio y disponibilidad de esta oferta: ${title}.`)}`;link.target='_blank';link.rel='noopener';link.setAttribute('aria-label',`Solicitar por WhatsApp la oferta ${title}`);link.innerHTML='<span aria-hidden="true">●</span> Solicitar por WhatsApp ↗';button.closest('.offer-photo').appendChild(link)});
@@ -9,21 +9,20 @@ document.querySelector('#year').textContent=new Date().getFullYear();
 
 const adminMode=new URLSearchParams(location.search).get('edit')==='media';
 if(adminMode){
-  fetch('api/admin-session.php',{cache:'no-store'}).then(r=>r.json()).then(session=>{
-    if(!session.authenticated)return;
-    document.body.classList.add('media-editing');
-    const hero=document.querySelector('.offers-hero');
-    if(!hero)return;
-    const button=document.createElement('button');
-    button.type='button';button.className='site-media-edit-button';button.textContent='✎ Cambiar portada';
-    const input=document.createElement('input');input.type='file';input.accept='image/jpeg,image/png,image/webp';input.hidden=true;
-    hero.append(button,input);
-    button.addEventListener('click',()=>input.click());
-    input.addEventListener('change',()=>{
-      const file=input.files[0];if(!file)return;
-      const form=new FormData();form.append('csrf',session.csrf);form.append('slot_key','offers_cover');form.append('media',file);
-      button.disabled=true;button.textContent='Subiendo…';
-      fetch('api/admin-site-media.php',{method:'POST',body:form}).then(async response=>{const data=await response.json();if(!response.ok||!data.ok)throw new Error(data.error||'No se pudo actualizar la portada');hero.style.backgroundImage=`linear-gradient(90deg,rgba(5,9,22,.94),rgba(5,9,22,.35)),url("${data.path}")`;button.textContent='✓ Portada actualizada'}).catch(error=>{button.textContent='✎ Cambiar portada';alert(error.message)}).finally(()=>{button.disabled=false;input.value=''});
-    });
-  }).catch(()=>{});
+ fetch('api/admin-session.php',{cache:'no-store'}).then(r=>r.json()).then(session=>{
+  if(!session.authenticated)return;
+  document.body.classList.add('media-editing');
+  const hero=document.querySelector('.offers-hero');if(!hero)return;
+  const button=document.createElement('button');button.type='button';button.className='site-media-edit-button';button.textContent='✎ Cambiar portada';
+  const panel=document.createElement('div');panel.className='offers-media-editor';
+  panel.innerHTML='<label>Fotografía<input type="file" accept="image/jpeg,image/png,image/webp"></label><label>Encuadre horizontal<input type="range" min="0" max="100" value="50" data-focal-x></label><label>Encuadre vertical<input type="range" min="0" max="100" value="50" data-focal-y></label><img alt="Vista previa de portada" hidden><label>Versiones anteriores<select data-history><option value="">Selecciona una versión</option></select></label><button type="button" data-restore>Restaurar versión</button><button type="button" data-save>Guardar portada</button><p data-status></p>';
+  hero.append(button,panel);
+  const input=panel.querySelector('input[type=file]'),preview=panel.querySelector('img'),x=panel.querySelector('[data-focal-x]'),y=panel.querySelector('[data-focal-y]'),history=panel.querySelector('[data-history]'),status=panel.querySelector('[data-status]');
+  if(offersCover){x.value=offersCover.focal_x??50;y.value=offersCover.focal_y??50;history.innerHTML='<option value="">Selecciona una versión</option>'+(offersCover.history||[]).map((h,i)=>'<option value="'+h.id+'">Versión '+(i+1)+' · '+new Date(h.created_at).toLocaleString('es-CL')+'</option>').join('');}
+  const updatePosition=()=>{hero.style.backgroundPosition=x.value+'% '+y.value+'%';};x.addEventListener('input',updatePosition);y.addEventListener('input',updatePosition);
+  input.addEventListener('change',()=>{const file=input.files[0];if(!file)return;const url=URL.createObjectURL(file);preview.src=url;preview.hidden=false;});
+  button.addEventListener('click',()=>panel.classList.toggle('open'));
+  panel.querySelector('[data-save]').addEventListener('click',async()=>{const file=input.files[0];if(!file){status.textContent='Selecciona una fotografía.';return;}const form=new FormData();form.append('csrf',session.csrf);form.append('slot_key','offers_cover');form.append('media',file);form.append('focal_x',x.value);form.append('focal_y',y.value);status.textContent='Subiendo…';try{const response=await fetch('api/admin-site-media.php',{method:'POST',body:form}),result=await response.json();if(!response.ok||!result.ok)throw new Error(result.error||'No se pudo guardar');setOffersCover({...offersCover,...result,history:offersCover?.history||[]});status.textContent='Portada publicada.';input.value='';preview.hidden=true;}catch(error){status.textContent=error.message;}});
+  panel.querySelector('[data-restore]').addEventListener('click',async()=>{if(!history.value){status.textContent='Selecciona una versión anterior.';return;}const form=new FormData();form.append('csrf',session.csrf);form.append('slot_key','offers_cover');form.append('action','restore');form.append('history_id',history.value);try{const response=await fetch('api/admin-site-media.php',{method:'POST',body:form}),result=await response.json();if(!response.ok||!result.ok)throw new Error(result.error||'No se pudo restaurar');setOffersCover({...offersCover,...result});x.value=result.focal_x;y.value=result.focal_y;status.textContent='Versión restaurada.';}catch(error){status.textContent=error.message;}});
+ }).catch(()=>{});
 }
