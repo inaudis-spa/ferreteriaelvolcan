@@ -6,3 +6,24 @@ document.querySelectorAll('.offer-photo [data-photo]').forEach(button=>{const ti
 document.addEventListener('click',event=>{const trigger=event.target.closest('[data-photo]');if(trigger){const title=trigger.dataset.title;document.querySelector('#lightbox-image').src=`ferreteriaelvolcan/${trigger.dataset.photo}`;document.querySelector('#lightbox-image').alt=title;document.querySelector('#lightbox-title').textContent=title;document.querySelector('#lightbox-whatsapp').href=`https://wa.me/56986771343?text=${encodeURIComponent(`Hola Ferretería El Volcán, quisiera consultar disponibilidad y oferta vigente de: ${title}.`)}`;lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');document.querySelector('.lightbox-close').focus()}if(event.target.closest('[data-close-lightbox]'))closeLightbox()});
 document.addEventListener('keydown',event=>{if(event.key==='Escape')closeLightbox()});
 document.querySelector('#year').textContent=new Date().getFullYear();
+
+const adminMode=new URLSearchParams(location.search).get('edit')==='media';
+if(adminMode){
+  fetch('api/admin-session.php',{cache:'no-store'}).then(r=>r.json()).then(session=>{
+    if(!session.authenticated)return;
+    document.body.classList.add('media-editing');
+    const hero=document.querySelector('.offers-hero');
+    if(!hero)return;
+    const button=document.createElement('button');
+    button.type='button';button.className='site-media-edit-button';button.textContent='✎ Cambiar portada';
+    const input=document.createElement('input');input.type='file';input.accept='image/jpeg,image/png,image/webp';input.hidden=true;
+    hero.append(button,input);
+    button.addEventListener('click',()=>input.click());
+    input.addEventListener('change',()=>{
+      const file=input.files[0];if(!file)return;
+      const form=new FormData();form.append('csrf',session.csrf);form.append('slot_key','offers_cover');form.append('media',file);
+      button.disabled=true;button.textContent='Subiendo…';
+      fetch('api/admin-site-media.php',{method:'POST',body:form}).then(async response=>{const data=await response.json();if(!response.ok||!data.ok)throw new Error(data.error||'No se pudo actualizar la portada');hero.style.backgroundImage=`linear-gradient(90deg,rgba(5,9,22,.94),rgba(5,9,22,.35)),url("${data.path}")`;button.textContent='✓ Portada actualizada'}).catch(error=>{button.textContent='✎ Cambiar portada';alert(error.message)}).finally(()=>{button.disabled=false;input.value=''});
+    });
+  }).catch(()=>{});
+}
