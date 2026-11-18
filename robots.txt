@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /includes/
+Disallow: /lib/
+Disallow: /uploads/
+
+Sitemap: https://ferreterialican.cl/sitemap.xml
