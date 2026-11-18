@@ -1,2 +1,9 @@
 DirectoryIndex index.html
 
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+RewriteRule ^producto/([a-zA-Z0-9-]+)/?$ producto/index.php?slug=$1 [L,QSA]
+RewriteRule ^categoria/([a-zA-Z0-9-]+)/?$ categoria/index.php?slug=$1 [L,QSA]
+RewriteRule ^zonas/([a-zA-Z0-9-]+)/?$ zonas/index.php?slug=$1 [L,QSA]
+</IfModule>
