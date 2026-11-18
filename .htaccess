@@ -7,3 +7,4 @@ RewriteRule ^producto/([a-zA-Z0-9-]+)/?$ producto/index.php?slug=$1 [L,QSA]
 RewriteRule ^categoria/([a-zA-Z0-9-]+)/?$ categoria/index.php?slug=$1 [L,QSA]
 RewriteRule ^zonas/([a-zA-Z0-9-]+)/?$ zonas/index.php?slug=$1 [L,QSA]
 </IfModule>
+RewriteRule ^despachos-zona-lacustre/?$ despachos-zona-lacustre/index.php [L,QSA]
